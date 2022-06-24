@@ -22,11 +22,8 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, type: "applicatio
 app.use(bodyParser.json({ type: "application/json" }));
 app.use(bodyParser.raw({ limit: "50mb" }));
 
-app.use('/', express.static(__dirname + '/superadmin'));
-app.use('/nsealerts', express.static(__dirname + '/nsealerts'));
 app.use('/indianmango', express.static(__dirname + '/indianmango'));
-app.use('/algoautotraders', express.static(__dirname + '/algoautotraders'));
-
+app.use('/superadmin', express.static(__dirname + '/superadmin'));
 global.appRoot = path.resolve(__dirname);
-app.listen(20000);
+app.listen(23000);
 console.log('server is started at port: 20000');
