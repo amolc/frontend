@@ -1,0 +1,469 @@
+<!doctype html>
+<!--
+* 
+* @version 1.0.0-beta10
+* @link https://tabler.io
+* Copyright 2018-2022 The Tabler Authors
+* Copyright 2018-2022 codecalm.net Paweł Kuna
+* Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
+-->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Item Page - </title>
+    <!-- CSS files -->
+    <link href="./dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="./dist/css/tabler-flags.min.css" rel="stylesheet" />
+    <link href="./dist/css/tabler-payments.min.css" rel="stylesheet" />
+    <link href="./dist/css/tabler-vendors.min.css" rel="stylesheet" />
+    <link href="./dist/css/demo.min.css" rel="stylesheet" />
+    <link href="./dist/css/tabler.custom.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/@tabler/icons@latest/iconfont/tabler-icons.min.css">
+
+    <!-- 1. Add the following script to your page. -->
+    <!-- 1. Add the following script to your page. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+    <script src="./angular/angular-storage.min.js"></script>
+    <script src="./angular/angular-payments.js"></script>
+    <script src="./angular/app.js"></script>
+    <script src="./angular/service.js"></script>
+    <script src="./angular/itemsCtrl.js"></script>
+
+</head>
+
+<body class="theme-light" ng-app="website" ng-controller="itemsCtrl" ng-init="list()">
+    <header class="navbar navbar-expand-md navbar-light d-print-none">
+        <div class="container-xl">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+            <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
+                <a href="..">
+                    <img src="./static/logo/superadmin.png" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+                </a>
+            </h1>
+            <div class="navbar-nav flex-row order-md-last">
+
+                <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode" data-bs-toggle="tooltip" data-bs-placement="bottom">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/moon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg>
+                </a>
+                <a href="?theme=light" class="nav-link px-0 hide-theme-light" title="Enable light mode" data-bs-toggle="tooltip" data-bs-placement="bottom">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/sun -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="4" /><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" /></svg>
+                </a>
+                <div class="nav-item dropdown">
+
+                    <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
+                        <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                        <div class="d-none d-xl-block ps-2">
+                            <div>Paweł Kuna</div>
+                            <div class="mt-1 small text-muted">UI Designer</div>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                        <a href="#" class="dropdown-item">Set status</a>
+                        <a href="#" class="dropdown-item">Profile & account</a>
+                        <a href="#" class="dropdown-item">Feedback</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">Settings</a>
+                        <a href="#" class="dropdown-item">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="navbar-expand-md">
+        <div class="collapse navbar-collapse" id="navbar-menu">
+            <div class="navbar navbar-light">
+                <div class="container-xl">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">
+                                <i class="ti ti-home" style="font-size:19px;color:rgb(157, 154, 154);"> &nbsp;</i>
+
+                                <span class="nav-link-title">
+                  Home
+                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="organization.html">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="5 12 3 12 12 3 21 12 19 12" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
+                </span>
+                                <span class="nav-link-title">
+                  Organization
+                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="customer.html">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="5 12 3 12 12 3 21 12 19 12" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
+                </span>
+                                <span class="nav-link-title">
+                  Customers
+                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#navbar-products" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+                </span>
+                                <span class="nav-link-title">
+                  Products
+                </span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-menu-columns">
+                                    <div class="dropdown-menu-column">
+                                        <a class="dropdown-item" href="./supercategory.html">
+                      Supercategory
+                    </a>
+                                        <a class="dropdown-item" href="./category.html">
+                      Category
+                    </a>
+                                        <a class="dropdown-item" href="./items.html">
+                      Items
+                    </a>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="orders.html">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="5 12 3 12 12 3 21 12 19 12" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
+                </span>
+                                <span class="nav-link-title">
+                  Orders
+                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="trade-signals.html">
+                                <i class="ti ti-settings" style="font-size:19px;color:rgb(157, 154, 154);">&nbsp;</i>
+                                <span class="nav-link-title">
+                                    Signals
+                                    </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="settings.html">
+                                <i class="ti ti-settings" style="font-size:19px;color:rgb(157, 154, 154);">&nbsp;</i>
+                                <span class="nav-link-title">
+                  Settings
+                </span>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                    <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
+                        <form action="." method="get">
+                            <div class="input-icon">
+                                <span class="input-icon-addon">
+                  <!-- Download SVG icon from http://tabler-icons.io/i/search -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="10" cy="10" r="7" /><line x1="21" y1="21" x2="15" y2="15" /></svg>
+                </span>
+                                <input type="text" value="" class="form-control" placeholder="Search…" aria-label="Search in website">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="page-wrapper">
+        <div class="container-xl">
+            <!-- Page title -->
+            <div class="page-header d-print-none">
+                <div class="row g-2 align-items-center">
+                    <div class="col">
+                        <!-- Page pre-title -->
+                        <div class="page-pretitle">
+                            Overview
+                        </div>
+                        <h2 class="page-title">
+                            Dashboard
+                        </h2>
+                    </div>
+                    <!-- Page title actions -->
+                    <div class="col-12 col-md-auto ms-auto d-print-none">
+                        <div class="btn-list">
+
+                            <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modalwindow">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="5" y1="12" x2="19" y2="12" /></svg> Add Item
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-body">
+            <div class="container-xl">
+                <div class="card">
+                    <div class="card-body">
+                        <div id="table-default">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th><button class="table-sort" data-sort="sort-name">Id</button></th>
+                                        <th><button class="table-sort" data-sort="sort-name">Org ID</button></th>
+
+                                        <th><button class="table-sort" data-sort="sort-type">Name</button></th>
+
+                                        <th><button class="table-sort" data-sort="sort-type">Description</button></th>
+                                        <th><button class="table-sort" data-sort="sort-type">Thumbnail</button></th>
+                                        <th><button class="table-sort" data-sort="sort-type">Picture</button></th>
+                                        <th><button class="table-sort" data-sort="sort-type">Actions</button></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-tbody">
+
+                                    <tr ng-repeat="data in dataset">
+                                        <td class="sort-name">{{data.id}}</td>
+                                        <td class="sort-name">{{data.org_id}}</td>
+                                        <td class="sort-name">{{data.name}}</td>
+                                        <td class="sort-date">{{data.description}}</td>
+                                        <td class="sort-date">{{data.thumbnail}}</td>
+                                        <td class="sort-date">{{data.picture}}</td>
+
+
+
+                                        <td>
+
+
+                                            <a href="#" class="btn btn-facebook w-10 h-10 btn-icon" data-bs-toggle="modal" data-bs-target="#modalwindow" ng-click="update(data.id)">
+                                                <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                    <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                                                    <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                                                    <line x1="16" y1="5" x2="19" y2="8" />
+                                                  </svg>
+                                            </a>
+                                            <a href="#" class="btn btn-facebook w-10 h-10 btn-icon" ng-click="delete(data.id)">
+                                                <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                    <line x1="4" y1="7" x2="20" y2="7" />
+                                                    <line x1="10" y1="11" x2="10" y2="17" />
+                                                    <line x1="14" y1="11" x2="14" y2="17" />
+                                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                                  </svg>
+                                            </a>
+
+
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="pagination">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                    <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="15 6 9 12 15 18" /></svg>                                    prev
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                            <li class="page-item"><a class="page-link" href="#">5</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+              next <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="9 6 15 12 9 18" /></svg>
+            </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- <footer class="footer footer-transparent d-print-none">
+
+            <div class="navbar-expand-md" style="position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;">
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <div class="navbar navbar-light">
+                        <div class="container-md" style="border:1px solid red;">
+                            <div class="row" style="border:1px solid red;width:100%;">
+                                <div class=" col-md-8 ">
+                                    Copyright 2022 ssss
+                                </div>
+                                <div class="col-md-3 ">
+                                    <form action=". " method="get ">
+                                        <div class="input-icon ">
+                                            <span class="input-icon-addon ">
+                                
+                                  <svg xmlns="http://www.w3.org/2000/svg " class="icon " width="24 " height="24 " viewBox="0 0 24 24 " stroke-width="2 " stroke="currentColor " fill="none " stroke-linecap="round " stroke-linejoin="round
+                                "><path stroke="none " d="M0 0h24v24H0z " fill="none "/><circle cx="10 " cy="10 " r="7 " /><line x1="21 " y1="21 " x2="15 " y2="15 " /></svg>
+                                </span>
+                                            <input type="text " value=" " class="form-control " placeholder="Search… " aria-label="Search in website ">
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </footer> -->
+
+        <footer class="container-fluid footerstyle" style="">
+            <div class="page-wrapper">
+                <div class="container-xl">
+                    <div class="row">
+                        <div class="col-3"><span>Copyright 2022 Amolc@github</span></div>
+
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+
+
+    </div>
+    </div>
+    <div class="modal modal-blur fade " id="modalwindow" tabindex="-1" role="dialog " aria-hidden="true ">
+        <div class="modal-dialog modal-lg " role="document ">
+            <div class="modal-content ">
+                <div class="modal-header ">
+                    <h5 class="modal-title ">Add Items</h5>
+                    <button type="button " class="btn-close " data-bs-dismiss="modal" aria-label="Close "></button>
+                </div>
+                <div class="modal-body ">
+
+                    <div class="row ">
+                        <div class="col-6 ">
+                            <label class="form-label ">Organization  </label>
+                            <input type="text " class="form-control " ng-model="data.org_id" placeholder="Your Name ">
+                        </div>
+                        <div class="col-6 ">
+
+                        </div>
+
+                        <div class="col-6 ">
+                            <label class="form-label ">Name  </label>
+                            <input type="text " class="form-control " ng-model="data.name" placeholder="Your Name ">
+                        </div>
+
+                        <div class="col-6 ">
+                            <label class="form-label ">Description  </label>
+                            <input type="text " class="form-control " ng-model="data.description" placeholder="Your Name ">
+                        </div>
+
+                        <div class="col-6 ">
+                            <label class="form-label ">Price  </label>
+                            <input type="text " class="form-control " ng-model="data.price" placeholder="Your Price ">
+                        </div>
+                        <div class="col-6 ">
+                            <label class="form-label ">SGD  </label>
+                            <input type="text " class="form-control " ng-model="data.currency" placeholder="Your currency ">
+                        </div>
+                        <div class="col-6 ">
+                            <label class="form-label ">Itemcolor  </label>
+                            <input type="text " class="form-control " ng-model="data.itemcolor" placeholder="Your currency ">
+                        </div>
+                        <div class="col-6 ">
+                            <label class="form-label ">Itemsize  </label>
+                            <input type="text " class="form-control " ng-model="data.itemsize" placeholder="Your currency ">
+                        </div>
+                        <div class="col-6 ">
+                            <label class="form-label ">Stockinhand   </label>
+                            <input type="text " class="form-control " ng-model="data.stockinhand" placeholder="Your currency ">
+                        </div>
+                        <div class="col-6 ">
+                            <label class="form-label ">Stockinwarehouse   </label>
+                            <input type="text " class="form-control " ng-model="data.stockinwarehouse" placeholder="Your currency ">
+                        </div>
+                        <div class="col-6 ">
+                            <label class="form-label ">Uniquecode   </label>
+                            <input type="text " class="form-control " ng-model="data.uniquecode" placeholder="Your currency ">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label ">Product Description  </label>
+                            <textarea type="text " class="form-control " ng-model="data.longtext" placeholder="Your currency ">
+                                </textarea>
+                        </div>
+
+                        <div class="col-6 ">
+                            <label class="form-label ">Thumbnail </label>
+                            <input type="file" onchange="angular.element(this).scope().updateattachment()" id="file_browse" />
+                        </div>
+                        <div class="col-6 ">
+                            <label class="form-label ">Picture  </label>
+                            <input type="text " class="form-control " ng-model="data.thumbnailimage" placeholder="Your currency ">
+                        </div>
+                        <div class="col-6 ">
+                            <label class="form-label ">ID  </label>
+                            <input type="text " class="form-control " ng-model="data.id">
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+                </div>
+                <div class="modal-body ">
+                    <div class="row ">
+
+                        <div class="col-2 ">
+
+                            <a class="btn btn-primary w-100" ng-click="add()" data-bs-dismiss="modal">Submit</a>
+
+                        </div>
+                        <div class="col-2 ">
+                            <a href="# " class="btn btn-info ms-auto " data-bs-dismiss="modal">
+                                Cancel
+                            </a>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Libs JS -->
+    <!-- Tabler Core -->
+    <script src="./dist/js/tabler.min.js " defer></script>
+    <script src="./dist/js/demo.min.js " defer></script>
+</body>
+
+</html>

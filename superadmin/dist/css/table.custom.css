@@ -1,0 +1,8 @@
+.footerstyle {
+    height: 100px;
+    background-color: #dbe7f5;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 10px;
+}

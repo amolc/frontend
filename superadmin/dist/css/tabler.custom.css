@@ -1,0 +1,9 @@
+.footerstyle {
+    height: 50px;
+    background-color: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 10px;
+    border-top: 1px solid rgb(192, 192, 192);
+}
